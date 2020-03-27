@@ -56,6 +56,7 @@ public class ProxyServer extends Thread{
         	//连接到目标服务器
         	targetSocket = new Socket();
         	targetSocket.connect(new InetSocketAddress(host, port), 5000);
+        	targetSocket.setSoTimeout(5000);
         	targetInput = targetSocket.getInputStream();
         	targetOutput = targetSocket.getOutputStream();
             //根据HTTP method来判断是https还是http请求

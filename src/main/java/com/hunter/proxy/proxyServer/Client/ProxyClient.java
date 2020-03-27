@@ -68,6 +68,7 @@ public class ProxyClient extends Thread{
             proxySocket = new Socket();
             proxySocket.connect(new InetSocketAddress(ProxyClient.proxyServerHost, ProxyClient.proxyServerPort), 5000);
             //proxySocket.connect(new InetSocketAddress(host,port), 5000);
+            proxySocket.setSoTimeout(5000);
             proxyInput = proxySocket.getInputStream();
             proxyOutput = proxySocket.getOutputStream();
             
@@ -83,11 +84,11 @@ public class ProxyClient extends Thread{
             byte[] content = new byte[4096];            
             while((count = proxyInput.read(content)) != -1){
             	content = EncryptUtil.decrypt(content);
-            	//System.out.print(new String(content, 0, count));
             	browserOutput.write(content, 0, count);
             	browserOutput.flush();
-            }System.out.println();
+            }
             browserOutput.flush();
+            proxySocket.close();
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}finally{
