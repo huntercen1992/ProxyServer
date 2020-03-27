@@ -15,7 +15,7 @@
 			<configuration>
 				<archive>
                     <manifest>
-                        <mainClass>com.hunter.proxy.proxyServer.Server.ProxyServer</mainClass>
+                        <mainClass>com.hunter.proxy.proxyServer.Client.ProxyClient</mainClass>
                     </manifest>
              	</archive>
 			</configuration>
