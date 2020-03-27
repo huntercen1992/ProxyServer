@@ -36,7 +36,7 @@ public class RequestHandle extends Thread{
             	}       	
             }
         } catch (IOException e) {
-        	System.out.println(Thread.currentThread().getName()+"============================>"+type + " " + host + ":" + port+"============================>:proxyStream has been closed");
+        	//System.out.println(Thread.currentThread().getName()+"============================>"+type + " " + host + ":" + port+"============================>:proxyStream has been closed");
         }
 	}
 }

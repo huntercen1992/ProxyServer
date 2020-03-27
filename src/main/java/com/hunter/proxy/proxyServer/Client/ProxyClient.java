@@ -60,8 +60,8 @@ public class ProxyClient extends Thread{
             
             //if(host.indexOf("www.baidu.com")==-1)return;
             //if(host.indexOf("tool.chinaz.com")==-1)return;           
-            System.out.println(Thread.currentThread().getName()+"============================>"+type+" "+host+":"+port);
-            System.out.println(headStr);
+            //System.out.println(Thread.currentThread().getName()+"============================>"+type+" "+host+":"+port);
+            //System.out.println(headStr);
             
             //连接到代理服务器
             //proxySocket = new Socket(ProxyClient.proxyServerHost, ProxyClient.proxyServerPort);

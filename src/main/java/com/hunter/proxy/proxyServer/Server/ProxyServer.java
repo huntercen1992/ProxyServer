@@ -50,8 +50,8 @@ public class ProxyServer extends Thread{
         		host = result[1];
         		port = Integer.valueOf(result[2]);
         	}
-        	System.out.println(Thread.currentThread().getName()+"============================>"+type+" "+host+":"+port);
-        	System.out.println(headStr);
+        	//System.out.println(Thread.currentThread().getName()+"============================>"+type+" "+host+":"+port);
+        	//System.out.println(headStr);
         	
         	//连接到目标服务器
         	targetSocket = new Socket();
@@ -79,11 +79,11 @@ public class ProxyServer extends Thread{
             	clientOutput.write(content, 0, count);
             	clientOutput.flush();
             }
-            System.out.println();
+            targetSocket.close();
             clientOutput.flush();
         }catch(Exception ex){
         	//ex.printStackTrace();
-        	System.out.println(Thread.currentThread().getName()+"============================>"+ex.getMessage());
+        	//System.out.println(Thread.currentThread().getName()+"============================>"+ex.getMessage());
         }finally{
 			if (targetInput != null) {
                 try {
