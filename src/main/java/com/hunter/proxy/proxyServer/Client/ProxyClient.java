@@ -11,6 +11,8 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import com.hunter.proxy.proxyServer.Encryption.EncryptUtil;
 import com.hunter.proxy.proxyServer.Server.ProxyServer;
@@ -140,11 +142,12 @@ public class ProxyClient extends Thread{
 	public static void main( String[] args )
     { 	
     	try{
+    		ExecutorService es = Executors.newCachedThreadPool();  
     		ServerSocket server  = new ServerSocket(8888);
     		while(true){
     			Socket socket = server.accept();
     			ProxyClient pc = new ProxyClient(socket);
-    			pc.start();
+    			es.execute(pc);
     		}
     	}catch(Exception ex){
     		ex.printStackTrace();

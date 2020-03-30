@@ -8,6 +8,8 @@ import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import com.hunter.proxy.proxyServer.ClientSocketHandler;
 import com.hunter.proxy.proxyServer.Client.ProxyClient;
@@ -133,11 +135,12 @@ public class ProxyServer extends Thread{
 	public static void main( String[] args )
     { 	
     	try{
+    		ExecutorService es = Executors.newCachedThreadPool();    		
     		ServerSocket server  = new ServerSocket(9999);
     		while(true){
     			Socket socket = server.accept();
     			ProxyServer ps = new ProxyServer(socket);
-    			ps.start();
+    			es.execute(ps);
     		}
     	}catch(Exception ex){
     		ex.printStackTrace();
