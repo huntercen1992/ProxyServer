@@ -142,7 +142,7 @@ public class ProxyClient extends Thread{
 	public static void main( String[] args )
     { 	
     	try{
-    		ExecutorService es = Executors.newCachedThreadPool();  
+    		ExecutorService es = Executors.newFixedThreadPool(20);  
     		ServerSocket server  = new ServerSocket(8888);
     		while(true){
     			Socket socket = server.accept();
