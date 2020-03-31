@@ -1,8 +1,8 @@
 #!/bin/sh
 
-PID=`ps -e|grep proxyServer|grep -v grep|awk '{print \$1}'`
+PID=`ps -ef|grep proxyServer|grep -v grep|awk '{print $2}'`
 
-if[ -n "${PID}" ]
+if [ -n "${PID}" ]
 then
 	echo "kill ${PID}"
 	kill -9 ${PID}
