@@ -141,13 +141,12 @@ public class ProxyClient extends Thread{
 	
 	public static void main( String[] args )
     { 	
-    	try{
-    		ExecutorService es = Executors.newFixedThreadPool(20);  
+    	try{  
     		ServerSocket server  = new ServerSocket(8888);
     		while(true){
     			Socket socket = server.accept();
     			ProxyClient pc = new ProxyClient(socket);
-    			es.execute(pc);
+    			pc.start();
     		}
     	}catch(Exception ex){
     		ex.printStackTrace();
