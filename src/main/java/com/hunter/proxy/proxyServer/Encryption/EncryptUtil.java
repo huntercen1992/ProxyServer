@@ -18,7 +18,7 @@ public class EncryptUtil {
 	public static byte[] encrypt(byte[] resource){
 		if(flag)return resource;
 		if(resource == null)return null;
-		
+
 		for(int i = 0; i < resource.length; i=i+10){
 			int index = resource[i] + 128;
 			resource[i] = keys[index];
@@ -29,7 +29,7 @@ public class EncryptUtil {
 	public static byte[] decrypt(byte[] resource){
 		if(flag)return resource;
 		if(resource == null)return null;
-		
+
 		for(int i = 0; i < resource.length; i=i+10){
 			int value = resource[i];
 			for(int j = 0; j < keys.length; ++j){
