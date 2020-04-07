@@ -15,30 +15,55 @@ public class EncryptUtil {
 	
 	private static final boolean flag = false;
 	
+//	public static byte[] encrypt(byte[] resource){
+//		if(flag)return resource;
+//		if(resource == null)return null;
+//
+//		for(int i = 0; i < resource.length; i=i+3){
+//			int index = resource[i] + 128;
+//			resource[i] = keys[index];
+//		}
+//		return resource;
+//	}
+	
 	public static byte[] encrypt(byte[] resource){
 		if(flag)return resource;
 		if(resource == null)return null;
 
-		for(int i = 0; i < resource.length; i=i+3){
-			int index = resource[i] + 128;
-			resource[i] = keys[index];
+		for(int i = 0; i < resource.length; i++){
+			if(resource[i] != 127){
+				resource[i]++;
+			}
 		}
 		return resource;
 	}
+	
+	
+//	public static byte[] decrypt(byte[] resource){
+//		if(flag)return resource;
+//		if(resource == null)return null;
+//
+//		for(int i = 0; i < resource.length; i=i+3){
+//			int value = resource[i];
+//			for(int j = 0; j < keys.length; ++j){
+//				if(keys[j] == value){
+//					resource[i] = (byte)(j - 128);
+//					break;
+//				}
+//			}
+//			
+//		}
+//		return resource;
+//	}
 	
 	public static byte[] decrypt(byte[] resource){
 		if(flag)return resource;
 		if(resource == null)return null;
 
-		for(int i = 0; i < resource.length; i=i+3){
-			int value = resource[i];
-			for(int j = 0; j < keys.length; ++j){
-				if(keys[j] == value){
-					resource[i] = (byte)(j - 128);
-					break;
-				}
+		for(int i = 0; i < resource.length; i++){
+			if(resource[i] != -128){
+				resource[i]--;
 			}
-			
 		}
 		return resource;
 	}
