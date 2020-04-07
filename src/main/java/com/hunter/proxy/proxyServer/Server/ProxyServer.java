@@ -57,7 +57,7 @@ public class ProxyServer extends Thread{
         	
         	//连接到目标服务器
         	targetSocket = new Socket();
-        	targetSocket.connect(new InetSocketAddress(host, port), 5000);
+        	targetSocket.connect(new InetSocketAddress(host, port), 10000);
         	targetSocket.setSoTimeout(5000);
         	targetInput = targetSocket.getInputStream();
         	targetOutput = targetSocket.getOutputStream();

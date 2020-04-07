@@ -68,7 +68,7 @@ public class ProxyClient extends Thread{
             //连接到代理服务器
             //proxySocket = new Socket(ProxyClient.proxyServerHost, ProxyClient.proxyServerPort);
             proxySocket = new Socket();
-            proxySocket.connect(new InetSocketAddress(ProxyClient.proxyServerHost, ProxyClient.proxyServerPort), 5000);
+            proxySocket.connect(new InetSocketAddress(ProxyClient.proxyServerHost, ProxyClient.proxyServerPort), 10000);
             //proxySocket.connect(new InetSocketAddress(host,port), 5000);
             proxySocket.setSoTimeout(5000);
             proxyInput = proxySocket.getInputStream();
