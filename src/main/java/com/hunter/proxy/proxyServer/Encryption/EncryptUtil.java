@@ -542,7 +542,7 @@ public class EncryptUtil {
 		if(flag)return resource;
 		if(resource == null)return null;
 
-		for(int i = 0; i < resource.length; i=i+2){
+		for(int i = 0; i < resource.length; i++){
 			resource[i] = encrypMap.get(resource[i]).byteValue();
 		}
 		return resource;
@@ -552,7 +552,7 @@ public class EncryptUtil {
 		if(flag)return resource;
 		if(resource == null)return null;
 
-		for(int i = 0; i < resource.length; i=i+2){
+		for(int i = 0; i < resource.length; i++){
 			resource[i] = decrypMap.get(resource[i]).byteValue();			
 		}
 		return resource;
