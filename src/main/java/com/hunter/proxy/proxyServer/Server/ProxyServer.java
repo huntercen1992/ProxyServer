@@ -134,13 +134,12 @@ public class ProxyServer extends Thread{
 	
 	public static void main( String[] args )
     { 	
-    	try{
-    		ExecutorService es = Executors.newCachedThreadPool();    		
+    	try{   		
     		ServerSocket server  = new ServerSocket(9999);
     		while(true){
     			Socket socket = server.accept();
     			ProxyServer ps = new ProxyServer(socket);
-    			es.execute(ps);
+    			ps.start();
     		}
     	}catch(Exception ex){
     		ex.printStackTrace();
