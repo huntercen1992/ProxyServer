@@ -16,6 +16,7 @@ import java.util.concurrent.Executors;
 
 import com.hunter.proxy.proxyServer.Encryption.EncryptUtil;
 import com.hunter.proxy.proxyServer.Server.ProxyServer;
+import com.hunter.proxy.proxyServer.Util.ThreadPoolUtil;
 
 public class ProxyClient extends Thread{
 	
@@ -79,7 +80,8 @@ public class ProxyClient extends Thread{
             proxyOutput.flush();
             
             //新开线程转发客户端请求至代理服务器
-            new RequestHandle(browserInput, proxyOutput, type, host, port).start();         
+            //new RequestHandle(browserInput, proxyOutput, type, host, port).start();    
+            ThreadPoolUtil.execute(new RequestHandle(browserInput, proxyOutput, type, host, port));
             
             //转发目标服务器响应至客户端
             int count;
@@ -146,7 +148,8 @@ public class ProxyClient extends Thread{
     		while(true){
     			Socket socket = server.accept();
     			ProxyClient pc = new ProxyClient(socket);
-    			pc.start();
+    			//pc.start();
+    			ThreadPoolUtil.execute(pc);
     		}
     	}catch(Exception ex){
     		ex.printStackTrace();
