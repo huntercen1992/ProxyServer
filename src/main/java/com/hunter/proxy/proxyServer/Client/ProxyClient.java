@@ -20,7 +20,7 @@ import com.hunter.proxy.proxyServer.Util.ThreadPoolUtil;
 
 public class ProxyClient extends Thread{
 	
-	private static String proxyServerHost = "ec2-54-255-236-129.ap-southeast-1.compute.amazonaws.com";
+	private static String proxyServerHost = "ec2-52-221-182-91.ap-southeast-1.compute.amazonaws.com";
 	private static int proxyServerPort = 9999;
 
 	private Socket socket = null;
